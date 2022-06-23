@@ -22,6 +22,10 @@
      1<= t <= 1000
      2<= n <= 2*10^5
      0<= a[i] <= 2*10^5
+     It is guaranteed that 
+     the sum of n over all test cases does not exceed 2*10^5. 
+     It is also guaranteed that the
+    sum of all ai (over all test cases and all i) does not exceed 2*10^5.
 
 ***/
 /***
