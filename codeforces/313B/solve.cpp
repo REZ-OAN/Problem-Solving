@@ -33,7 +33,7 @@
 ***/
 #include<bits/stdc++.h>
 using namespace std;
-#define reset(a) memset(a,0,sizeof(a));
+#define reset(a) memset((a),0,sizeof(a));
 #define ll long long
 int main() {
     string s;
