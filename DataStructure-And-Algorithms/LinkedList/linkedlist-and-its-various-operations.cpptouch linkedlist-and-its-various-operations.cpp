@@ -184,8 +184,7 @@ void isfound(Node *head,int data)
 }
 int main()
 {
-    
-  /// fi fo
+    fi fo
     Node *head=NULL;
     int n;
     cin>>n;
