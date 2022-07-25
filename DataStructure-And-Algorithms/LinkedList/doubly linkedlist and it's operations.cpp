@@ -67,6 +67,7 @@ Node *delete_node(Node *head,int n)
         
         curr_node->prev=head;
         head=curr_node->next;
+        free(curr_node);
         return head;
       }
       else
@@ -87,6 +88,7 @@ Node *delete_node(Node *head,int n)
         if(curr_node->next==NULL) 
         {
             curr_node->prev->next=NULL;
+            free(curr_node);
             return head;
         }
         node->next=curr_node->next;
