@@ -23,7 +23,7 @@ Node {
    Node *next;
 };
 ///creating a node
-Node *create_node(int d,Node *next)
+Node *create_node(int d,Node *next_add)
 {
     Node *new_node=(Node*)malloc(sizeof(Node));
     ///os can allocate space for required node
@@ -35,7 +35,7 @@ Node *create_node(int d,Node *next)
     ///assigning data
     new_node->d=d;
     ///assigning the next node address;
-    new_node->next=next;
+    new_node->next=next_add;
     return new_node;
 
 }
