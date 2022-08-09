@@ -13,24 +13,22 @@ public:
     if(r<=cr || cr<0 || cc<0 ||cc>=c)return 0;
     return 1;
    }
-   vector<pair<int,int>>v;
-  void dfs(int r,int c,int cr,int cc,vector<vector<bool>>&vis,vector<vector<int>>&graph)
+   
+  void dfs(int r,int c,int cr,int cc,int init,vector<vector<int>>&graph,int o)
     {
        int dx4[]={1,0,-1,0};
        int dy4[]={0,1,0,-1};
-    if(vis[cr][cc])return;
-    vis[cr][cc]=1;
+    if(init!=graph[cr][cc])return;
+    graph[cr][cc]=o;
     for(int i=0;i<4;i++)
     {
+       
         int nr=cr+dx4[i];
         int nc=cc+dy4[i];
-        if(isvalid(r,c,nr,nc)) 
+        
+        if(isvalid(r,c,nr,nc)&&graph[nr][nc]==init) 
         {
-            if(graph[cr][cc]==graph[nr][nc]){
-            v.push_back({cr,cc});
-            dfs(r,c,nr,nc,vis,graph);
-             
-            }
+            dfs(r,c,nr,nc,init,graph,o);
         } 
     }
     
@@ -38,15 +36,10 @@ public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
         int r=image.size();
         int c=image[0].size();
-        vector<vector<bool>>vis(r,vector<bool>(c,0));
-        
-        dfs(r,c,sr,sc,vis,image);
-        for(auto &x : v)
-        {
-          image[x.first][x.second]=color;
-        }
-        image[sr][sc]=color;
-        v.clear();
+        int init=image[sr][sc];
+        if(init!=color)
+        dfs(r,c,sr,sc,init,image,color);
+       
         return image;
             
     }
