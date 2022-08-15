@@ -13,8 +13,10 @@ int main()
     {
         int v1,v2;
         cin>>v1>>v2;
+        ///for matrix
         graphM[v1][v2]=1;
         graphM[v2][v1]=1;
+        ///for adjacency list
         graphL[v1].push_back(v2);
         graphL[v2].push_back(v1);
     }
@@ -42,8 +44,10 @@ int main()
     {
         int v1,v2,w;
         cin>>v1>>v2>>w;
+        ///for matrix
         graphM[v1][v2]=w;
         graphM[v2][v1]=w;
+        ///for list
         graphL1[v1].push_back({v2,w});
         graphL1[v2].push_back({v1,w});
     }
