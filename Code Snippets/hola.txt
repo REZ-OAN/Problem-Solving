@@ -1,0 +1,153 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define fi freopen("input.txt","r",stdin);
+#define fo freopen("output.txt","w",stdout);
+#define ll long long
+#define mk(a,n,type) type *a= new type[n];
+#define for0(a,n) for(int i=a;i<n;i++)
+#define reset(a)  memset(a,0,sizeof(a));
+#define mx 100010
+
+inline void fast()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+}
+
+///Chess MOVE
+///4directional
+int dx4[] = {+0, +0, -1, +1};
+int dy4[] = {+1, -1, +0, +0};
+///8directional
+int dx8[] = {+0,+0,+1,-1,-1,+1,-1,+1}; 
+int dy8[] = {-1,+1,+0,+0,+1,+1,-1,-1};
+///knight's MOVE
+int dxk8[] = {-2, -2, -1, -1,  1,  1,  2,  2};
+int dyk8[] = {-1,  1, -2,  2, -2,  2, -1,  1};
+
+///function prototypes
+int mod_div(long long a,long long b,int mod);
+int mod_add(long long a,long long b,int mod);
+int mod_mul(long long a,long long b,int mod);
+int mod_sub(long long a,long long b,int mod);
+int bin_pow(long long a,long long b,int mod);
+int bin_mul(long long a,long long b,int mod);
+///function definitions
+int mod_add(long long a,long long b,int mod)
+{
+     return ((a%mod)+(b%mod))%mod;
+}
+int mod_mul(long long a,long long b,int mod)
+{
+    return ((a%mod)*(b%mod))%mod;
+}
+int mod_sub(long long a,long long b,int mod)
+{
+    return ((a%mod)-(b%mod)+mod)%mod;
+}
+int mod_div(long long a,long long b,int mod)
+{ 
+   return ((a%mod)*(bin_pow(b,mod-2,mod)%mod))%mod;
+}
+int bin_pow(long long a,long long n,int mod)
+{
+     a=a%mod;
+     ///if n is too much larger
+     /// mod is prime
+     ///n=n%(mod-1)
+     int ans=1;
+     while(n)
+     {
+        if(n&1){
+        ans=bin_mul(a*1LL,ans*1LL,mod);
+         }
+         a=bin_mul(a*1LL,a*1LL,mod);
+         n>>=1;
+     }
+   return ans;
+}
+int bin_mul(long long a,long long b,int mod)
+{
+     a=a%mod;
+     int ans=0;
+     while(b)
+       {
+           if(b&1)
+             {
+                 ans=mod_add(ans*1LL,a*1LL,mod);
+              }
+             a=mod_add(a*1LL,a*1LL,mod);
+             b>>=1;
+       }
+     return ans;
+}
+vector<int>prime;
+vector<bool>check(mx,1);
+void sieve()
+{
+    check[0]=0;
+    check[1]=0;
+    prime.push_back(2);
+    int i,j;
+    for(i=4;i<=mx;i+=2)check[i]=0;
+    for(i=3;i*i<=mx;i+=2)
+     {
+        if(check[i])
+        {
+             for(j=i*i;j<=mx;j+=(i<<1))
+              {
+                check[j]=0;
+               }
+         }
+     }
+     for(i=3;i<=mx;i+=2)
+       if(check[i])prime.push_back(i);
+}
+vector<pair<int,int>>prime_fact;
+vector<int>prime_div;
+/// nod =number of divisor
+///sod = sum of divisor
+/// denom = denominator
+
+long long nod=1;
+long long sod=1;
+long  long denom=1;
+ll d=1;
+ll nm=1;
+ll phi=1;
+void prime_factorize(long long n)
+{
+     int i;
+     phi=n;
+     for(i=0;i<prime.size() && prime[i]*prime[i]<=n;i++)
+     {
+         if(n%prime[i]==0)
+         {
+            nm*=(prime[i]-1)*1LL;
+            d*=prime[i]*1LL;
+            prime_div.push_back(prime[i]);
+            denom*=(prime[i]-1);
+            
+            int cnt=0;
+            while(n%prime[i]==0)
+            {
+                n/=prime[i];
+                cnt++;
+            }
+            prime_fact.push_back({prime[i],cnt});
+            nod*=(cnt+1);
+            sod*=(bin_pow(prime[i]*1LL,(cnt+1)*1LL,1000000007)-1);
+
+         }
+     }
+     if(n!=1){
+        prime_div.push_back(n);
+        prime_fact.push_back({n,1});
+        nod*=2;
+        nm*=(n-1);
+        d*=n;
+     }
+     phi=phi*nm/d;
+     sod=sod/denom;
+
+}
