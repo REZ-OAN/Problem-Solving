@@ -1,5 +1,5 @@
 ## for print
-print("x is known as the symbol of Porn")
+print("Hello WOrld")
 ## no need to specify the type
 ## automatically recognize them
 ## but as a string
