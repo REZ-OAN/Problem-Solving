@@ -1,0 +1,15 @@
+f = open("Problem-Solving\\Python Basics\\fun.txt","w")
+f.write('You\'re >......')
+f.close()
+f = open("Problem-Solving\\Python Basics\\fun.txt","a")
+f.write("\nYour Eyes Says Every THing")
+f.close()
+f = open("Problem-Solving\\Python Basics\\funn.txt","r")
+# print(f.read())
+f_out = open("Problem-Solving\\Python Basics\\funny.txt","w")
+
+for line in f :
+    s = line.split(' ')
+    f_out.write(line+"wordCount : "+str(len(s))+"\n")
+f.close()
+f_out.close()
