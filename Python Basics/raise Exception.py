@@ -16,9 +16,9 @@ except Accident as e :
     e.print_exception()
 a = Accident('Hello')
 print(a.ment)
-# print(a.ment)
-## after catching all the exception the execution leave from the block
-## but if we want to do something after the exception call we use finally:
+print(a.ment)
+# # after catching all the exception the execution leave from the block
+# # but if we want to do something after the exception call we use finally:
 # def process_file():
 #     try:
 #         f=open('Problem-Solving\\Python Basics\\fun.txt')
@@ -26,9 +26,10 @@ print(a.ment)
 #     except FileNotFoundError as e:
 #         print(e)
 #     f.close()
+#     print('Closed')
 # ## the f.close() file did not execute
 # process_file() 
-## so 
+# ## so 
 def process_file():
     try:
         f=open('Problem-Solving\\Python Basics\\fun.txt')

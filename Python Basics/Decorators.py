@@ -15,6 +15,7 @@ def calc_cube(numbers):
     end = time.time()
     print('calc_cube takes ',(end-start)*1000,'ms')
     return result
+
 ## this same thing canbe done with decorators
 # in python it allows us to pass function as parameter of another function
 def time_it(func):

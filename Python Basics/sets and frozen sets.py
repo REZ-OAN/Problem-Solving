@@ -32,9 +32,9 @@ y = {'b','c','d'}
 print(x|y)
 ## inter section using & 
 print(x&y)
-## set difference
+## set difference x/y
 print(x-y)
-## is subset of y
+## is subset of y 
 print(x<y)
 x = {'b','c'}
 print(x<y)

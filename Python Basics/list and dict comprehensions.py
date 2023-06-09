@@ -1,4 +1,4 @@
-mub = [1,10,20,3,4,5,3,2,4,2,6,8,10,20,]
+mub = [1,10,20,3,4,5,3,2,4,2,6,8,10,20]
 ## easiest way to map data from a list 
 even =[int(i) for i in mub if i%2==0]
 print(even)
@@ -6,6 +6,7 @@ sq_mub = [int(i*i) for i in mub]
 print(sq_mub)
 ## unordered and unique
 ## {} curly braces
+
 s = set(mub);
 print(s)
 even = { i for i in mub if i%2==0}

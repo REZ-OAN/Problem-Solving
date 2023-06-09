@@ -24,10 +24,10 @@ if __name__ == '__main__':
 
     kings = argparse.ArgumentParser()
     ## optional arguments
-    ## to access the arguments in cmd
+    ## to access the arguments in cmd  
     # --name value
     ## in this method you can skip the arguments but results will be undefined or unpredictable
-    # clearity about the process
+    # clearity about the process 
     kings.add_argument("--text",help = "A String without white spaces")
     kings.add_argument("--name",help = "author name") 
     argopt = kings.parse_args();
